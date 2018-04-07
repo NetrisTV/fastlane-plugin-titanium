@@ -11,7 +11,8 @@ Gem::Specification.new do |spec|
   spec.email         = 'r.belyakov@netris.ru'
 
   spec.summary       = 'Fastlane plugin for Axway Titanium'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-titanium"
+  spec.homepage      = "https://gitlab.netris.ru/r.belyakov/fastlane-plugin-titanium"
+  # spec.homepage      = "https://github.com/NetrisTV/fastlane-plugin-titanium"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
