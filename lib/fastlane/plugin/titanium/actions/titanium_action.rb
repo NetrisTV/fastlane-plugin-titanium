@@ -70,6 +70,11 @@ module Fastlane
       end
 
       def self.build(params)
+        
+        if params[:clean]
+          sh "rm -rf build Resources"
+        end
+        
         args = []
         args << "--device-id #{params[:device_id]}" if params[:device_id]
 
@@ -238,6 +243,13 @@ module Fastlane
             env_name: "TITANIUM_BUILD_OBSOLETE",
             description: "Whether to use ./scripts/build.js to build app",
             default_value: false,
+            is_string: false
+          ),
+          FastlaneCore::ConfigItem.new(
+            key: :clean,
+            env_name: "TITANIUM_CLEAN",
+            description: "Whether project should be cleaned before building",
+            default_value: true,
             is_string: false
           )
         ]
