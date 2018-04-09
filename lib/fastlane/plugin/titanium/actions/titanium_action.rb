@@ -160,7 +160,7 @@ module Fastlane
             env_name: "TITANIUM_PLATFORM",
             description: "Platform to build on. Should be either android or ios",
             is_string: true,
-            default_value: 'ios',
+            default_value: lane_context[SharedValues::PLATFORM_NAME].to_s,
             verify_block: proc do |value|
               UI.user_error!("Platform should be either android or ios") unless ['android', 'ios'].include? value
             end
