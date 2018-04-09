@@ -119,6 +119,15 @@ module Fastlane
 
           Actions.lane_context[SharedValues::IPA_OUTPUT_PATH] = output
           ENV[SharedValues::IPA_OUTPUT_PATH.to_s] = output # for deliver
+
+          sh "find build -name '*.dSYM' -exec zip -r '{}'.zip '{}' \\;"
+          dsym = Dir["build/iphone/build/Products/Release-iphoneos/*.dSYM.zip"].first
+
+          unless dsym.nil?
+            ENV['TITANIUM_IOS_RELEASE_DSYM_PATH'] = output
+            ENV["FL_HOCKEY_DSYM"] = dsym
+          end
+          
         end
 
         return output
