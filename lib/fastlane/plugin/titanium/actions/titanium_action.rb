@@ -70,14 +70,16 @@ module Fastlane
       end
 
       def self.build(params)
-        
         if params[:clean]
           sh "rm -rf build Resources"
         end
+
         
         args = []
         args << "--device-id #{params[:device_id]}" if params[:device_id]
 
+        args << "--sdk #{Fastlane::Helper::TitaniumHelper.get_ti_sdk_version}"
+        
         if params[:target] != "device"
           args << "--output-dir ./build/out"
         end
